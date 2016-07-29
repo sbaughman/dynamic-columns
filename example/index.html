@@ -52,7 +52,9 @@
 				</div>
 				<div class="small flex-item">
 					<h3>Container 2</h3>
-					<textarea>The coconut palm (also, cocoanut), Cocos nucifera, is a member of the family Arecaceae (palm family). It is the only accepted species in the genus Cocos.[2] </textarea>
+					<textarea>The coconut palm (also, cocoanut), Cocos nucifera, is a member of the family Arecaceae (palm family). It is the only accepted species in the genus Cocos.[2]
+
+					The coconut palm (also, cocoanut), Cocos nucifera, is a member of the family Arecaceae (palm family). It is the only accepted species in the genus Cocos.[2] The term coconut can refer to the entire coconut palm, the seed, or the fruit, which, botanically, is a drupe, not a nut. The spelling cocoanut is an archaic form of the word.[3] The term is derived from 16th-century Portuguese and Spanish coco, meaning "head" or "skull",[4] from the three small holes on the coconut shell that resemble human facial features.</textarea>
 				</div>
 			</div>
 			<div class="column">
@@ -64,7 +66,9 @@
 			<div class="column">
 				<div class="medium flex-item">
 					<h3>Container 4</h3>
-					<textarea>The coconut palm (also, cocoanut), Cocos nucifera, is a member of the family Arecaceae (palm family). It is the only accepted species in the genus Cocos.[2] The term coconut can refer to the entire coconut palm, the seed, or the fruit, which, botanically, is a drupe, not a nut. The spelling cocoanut is an archaic form of the word.[3] The term is derived from 16th-century Portuguese and Spanish coco, meaning "head" or "skull",[4] from the three small holes on the coconut shell that resemble human facial features.</textarea>
+					<textarea>The coconut palm (also, cocoanut), Cocos nucifera, is a member of the family Arecaceae (palm family). It is the only accepted species in the genus Cocos.[2] The term coconut can refer to the entire coconut palm, the seed, or the fruit, which, botanically, is a drupe, not a nut. The spelling cocoanut is an archaic form of the word.[3] The term is derived from 16th-century Portuguese and Spanish coco, meaning "head" or "skull",[4] from the three small holes on the coconut shell that resemble human facial features.
+
+					The coconut palm (also, cocoanut), Cocos nucifera, is a member of the family Arecaceae (palm family). It is the only accepted species in the genus Cocos.[2] The term coconut can refer to the entire coconut palm, the seed, or the fruit, which, botanically, is a drupe, not a nut. The spelling cocoanut is an archaic form of the word.[3] The term is derived from 16th-century Portuguese and Spanish coco, meaning "head" or "skull",[4] from the three small holes on the coconut shell that resemble human facial features.</textarea>
 				</div>
 				<div class="small flex-item">
 					<h3>Container 5</h3>
@@ -77,13 +81,28 @@
 	<script src='../dist/autosize.js'></script>
 	<script>
 		autosize(document.querySelectorAll('textarea'));
+		$(setInitialSizes);
+		listenForChanges();
 
-		$('.medium').on('input', function(ev) {
-			var heightOfTextArea = $(this).find('textarea').height();
+		//////////////////////////////////////////
+
+		function setInitialSizes() {
+			$('.medium').each(function(i, el) {
+				sizeMediumAreas(el);
+			});
+		}
+
+		function listenForChanges() {
+			$('.medium').on('input', function(ev) {
+				sizeMediumAreas($(this))
+			});
+		}
+
+		function sizeMediumAreas(el) {
+			var heightOfTextArea = $(el).find('textarea').height();
 			var offset = 80;
 			var totalHeight = heightOfTextArea + offset;
 			$('.medium').css({'min-height': (totalHeight) + 'px'});
-		})
-
+		}
 	</script>
 </html>
